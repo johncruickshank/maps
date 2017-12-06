@@ -5,7 +5,7 @@ var MapWrapper = function(container, coords, zoom) {
 };
 
 MapWrapper.prototype.addMarker = function(coords) {
-  var marker = new google.maps.Marker({position: coords, map: this.googleMap});
+  var marker = new google.maps.Marker({position: coords, map: this.googleMap, draggable: true});
   this.markers.push(marker);
 };
 
@@ -33,8 +33,7 @@ MapWrapper.prototype.bounceMarkers = function() {
   });
 };
 
-MapWrapper.prototype.relocateCenter = function() {
-  var newLocation = {lat: 48.848913, lng: 2.368273};
+MapWrapper.prototype.relocateCenter = function(newLocation) {
   this.googleMap.setCenter(newLocation);
   this.addMarker(newLocation);
 };

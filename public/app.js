@@ -1,9 +1,11 @@
 var initialise = function() {
   var container = document.getElementById("main-map");
-  var center = {lat: 55.8532, lng: -4.3093};
+  var center = {lat: 55.768733, lng: -4.061221};
   var zoom = 12;
   var mainMap = new MapWrapper(container, center, zoom);
-  var content = "CodeClan building, Glasgow";
+  var content = "Home";
+  var newLocation = {lat: 48.848913, lng: 2.368273};
+
   mainMap.addMarker(center);
   mainMap.addClickEvent();
   mainMap.addClickEventInfo(content);
@@ -12,7 +14,9 @@ var initialise = function() {
   bounceButton.addEventListener("click", mainMap.bounceMarkers.bind(mainMap));
 
   var relocateButton = document.getElementById("button-set-center");
-  relocateButton.addEventListener("click", mainMap.relocateCenter.bind(mainMap));
+  relocateButton.addEventListener("click", function() {
+     mainMap.relocateCenter(newLocation);
+   });
 
 };
 
